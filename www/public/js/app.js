@@ -25,13 +25,9 @@ var twinkleStar = function(element, light){
 
 var handleStarClick = function(event){
     event.preventDefault();
-    var source = event.target || event.srcElement;
-    twinkleStar(source, this.getAttribute('data-light'));
+    twinkleStar(this, this.getAttribute('data-light'));
 };
 
 for(var i = 0; i < stars.length; i++){
     stars[i].onclick = handleStarClick;
 }
-
-
-

@@ -1,9 +1,8 @@
 "use strict";
 
 var stars = document.getElementsByClassName("star");
-console.log(stars);
 
-var twinkleStar = function(light){
+var twinkleStar = function(element, light){
     var data = {
         'light':light
     };
@@ -13,13 +12,21 @@ var twinkleStar = function(light){
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var result = JSON.parse(xhr.responseText);
+            if(result.success == true){
+                element.className += " active";
+                setTimeout(function(){
+                    element.className = element.className.replace("active", "");
+                }, 3000, element);
+            }
         }
     }
     xhr.send(JSON.stringify(data));
 };
 
-var handleStarClick = function(){
-    twinkleStar(this.getAttribute('data-light'));
+var handleStarClick = function(event){
+    event.preventDefault();
+    var source = event.target || event.srcElement;
+    twinkleStar(source, this.getAttribute('data-light'));
 };
 
 for(var i = 0; i < stars.length; i++){

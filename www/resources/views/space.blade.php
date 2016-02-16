@@ -7,7 +7,12 @@
          class="star" data-light="{{$light->id}}"
          data-position-x="{{$light->position_x}}"
          data-position-y="{{$light->position_y}}">
-        STAR
+            <a href="#star-{{$light->id}}">
+
+            </a>
+            <div class="starburst">
+
+            </div>
     </div>
 @endforeach
 

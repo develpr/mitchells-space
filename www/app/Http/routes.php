@@ -21,8 +21,11 @@ Route::get('/', function () {
 
 Route::post('/twinkle', function(Request $request){
 
+    $carbon = \Carbon\Carbon::create();
+    $hour = $carbon->hour;
+
     $lightId = $request->get('light');
-    if( ! $lightId )
+    if( ! $lightId || !( $hour > 8 && $hour < 22 ))
         $light = false;
     else
         $light = Light::find($lightId);

@@ -26,6 +26,13 @@ var twinkleStar = function(element, light){
 var handleStarClick = function(event){
     event.preventDefault();
     twinkleStar(this, this.getAttribute('data-light'));
+    
+    ga('send', {
+        hitType: 'event',
+        eventCategory: 'Star Interactions',
+        eventAction: 'click',
+        eventValue: this.getAttribute('data-light')
+    });
 };
 
 for(var i = 0; i < stars.length; i++){

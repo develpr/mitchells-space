@@ -31,7 +31,7 @@ var handleStarClick = function(event){
         hitType: 'event',
         eventCategory: 'Star Interactions',
         eventAction: 'click',
-        eventValue: this.getAttribute('data-light')
+        eventLabel: this.getAttribute('data-light')
     });
 };
 
